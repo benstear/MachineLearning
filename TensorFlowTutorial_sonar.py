@@ -1,6 +1,12 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
+# This is a simple multilayer perceptron (mlp) tutorial (from YouTube) using TensorFlow and python. I annotated the code for my own clarity. 
+# The dataset used is datasets/Sonar.csv and can be found in my datasets repository. This MLP predicts whether an object is 
+# a rock or a mine based on SONAR signals. Because the outcome is either a 1 (mine) or a 0 (rock), aka binary prediction, a
+# support vector machine may give better results.
+
+
 # TENSORFLOW tutorial on youtube
 # datasets/Sonar.csv
 import matplotlib.pyplot as plt
@@ -10,9 +16,6 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
-
-
-
 
 #sonarData = open("/Users/dawnstear/desktop/datasets-master/Sonar.csv","r+")
 #print sonarData.read() # <-- to view
@@ -64,7 +67,7 @@ model_path = "desktop/asdf"  # where to store graph
 # Define the number of hidden layers and nodes per layer
 n_hidden_1 = 60
 n_hidden_2 = 60
-n_hidden_3 = 60
+n_hidden_3 = 60      # we'll have 4 layers, 60 nodes each
 n_hidden_4 = 60
 
 x = tf.placeholder(tf.float32,[None, n_dim]) # inputs
@@ -77,7 +80,7 @@ y_ = tf.placeholder(tf.float32, [None, n_class]) # None means it can be any valu
 # Now create model
 def multilayer_perceptron(x,weights,biases):
     # hidden layer with sigmoid activation fxn
-    layer_1 = tf.add(tf.matmul(x,weights['h1']),biases['b1']) # x*W + b
+    layer_1 = tf.add(tf.matmul(x,weights['h1']),biases['b1']) #   g = x*W + b
     layer_1 = tf.nn.sigmoid(layer_1) 
     
     layer_2 = tf.add(tf.matmul(layer_1,weights['h2']), biases['b2']) # input is layer_1 output
@@ -144,7 +147,6 @@ for epoch in range(training_epochs):
     accuracy = (sess.run(accuracy, feed_dict={x: train_x, y: train_y}))
     accuracy_history.append(accuracy)
     
-a    
 save_path = saver.save(sess,model_path)
 print("Moddel saved in file: %s" % save_path)
 
@@ -152,7 +154,6 @@ plt.plot(mse_history,'r')
 plt.show()
 plt.plot(accuracy_history)
 plt.show()
-
 
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
@@ -162,7 +163,8 @@ mse = tf.reduce_mean(tf.square(pred_y-test_y))
 
     
 
-'''
+'''  MISC. notes
+
 node1 = tf.constant(3.0, tf.float32)
 node2 = tf.constant(4.0)
 # print(node1,node2)  # this will only print an abstraction
