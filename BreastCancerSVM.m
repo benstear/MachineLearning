@@ -1,6 +1,9 @@
 %
-% Ben Stear 4/13/18
+% AuthorBen Stear 4/13/18
+%
 % Breast Cancer Relapse Prediction Using Support Vector Machine
+% 
+% GEO ID: GSE7390
 %
 
 gse_B1 =geoseriesread('/Users/dawnstear/downloads/GSE7390_series_matrix.txt');
@@ -185,10 +188,6 @@ SVMModel2 = fitcsvm(sixbest_Xtrain,sixbest_ytrain);
 % Find accuracy
 Accuracy2 = mean(SVMModel2.predict(sixbest_Xtest) == sixbest_ytest) *100
 
-%%
-
-% Accuracy and AUC are both worse, I think I may have messed something up,
-% either selecting the wrong genes or the wrong number of genes
 
 
 
