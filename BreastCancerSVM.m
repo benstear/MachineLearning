@@ -155,8 +155,6 @@ fun = @(XTrain,yTtrain,Xtest,ytest)...
 % Compute forward feature (gene) selection
 % [fs,history] = sequentialfs(fun,X_all,y_all,c); 
 
-% wasnt working correctly^^^
-
 confusionmat(y_test,label)
 
 %%
