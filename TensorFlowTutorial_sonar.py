@@ -4,7 +4,7 @@
 # This is a simple multilayer perceptron (mlp) tutorial (from YouTube) using TensorFlow and python. I annotated the code for my own clarity. 
 # The dataset used is datasets/Sonar.csv and can be found in my datasets repository. This MLP predicts whether an object is 
 # a rock or a mine based on SONAR signals. Because the outcome is either a 1 (mine) or a 0 (rock), aka binary prediction, a
-# support vector machine may give better results.
+# support vector machine may give better results compared to a neural network.
 
 
 # TENSORFLOW tutorial on youtube
