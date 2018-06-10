@@ -3,6 +3,8 @@
 """
 Created on Tue Jun  5 11:35:06 2018
 
+A Convolutional Neural Network for classifying lung tumors as either benign or malignant
+
 @author: benstear
 """
 import numpy as np
