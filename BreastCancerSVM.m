@@ -187,7 +187,7 @@ SVMModel2 = fitcsvm(sixbest_Xtrain,sixbest_ytrain);
 Accuracy2 = mean(SVMModel2.predict(sixbest_Xtest) == sixbest_ytest) *100
 
 
-
+# This program still needs to be finished.
 
 
 
